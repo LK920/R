@@ -11,21 +11,21 @@ View(df_exam)
 #select : DF의 특정 컬럼을 선택ㅎ 새로운 DF 생성
 df_math <- df_exam %>% select(math) #ctrl+ shift + m
 df_english <- df_exam %>%  select(english)
-df1 <- df_exam %>%  select(math, science)
+df1 <- df_exam %>%  select(math, english, science)
 df2 <- df_exam %>%  select(everything())
 
 df2
-df1
+View(df1)
 df_english
 df_math
 
 #filter : DF의 특정 조건에 맞는 컴럼을 선택해서 새로운 DF 생성
 df_class1 <- df_exam %>% filter(class==1)
-df_class1
+View(df_class1)
 
 #영어점수 60점이상 80점 미만
 df_english <- df_exam %>%  filter(english >= 60 & english <80)
-
+View(df_english)
 #과학점수 60점이상 80점 미만
 df_science <- df_exam %>%  filter(science >= 60 & science <80)
 df_science
@@ -47,7 +47,7 @@ df_b <- df_exam %>% select(math, id, class) %>%
                     filter(math>=60) %>%
                     arrange(desc(math))%>%
                     head(3)
-df_b
+View(df_b)
 
 #mutate : DF의 새로운 특정 컬럼(파생변수)을 추가해서 새로운 DF 생성
 df_total  <- df_exam %>%  mutate(total = math + english + science)
@@ -69,7 +69,7 @@ df_group1 <- df_exam %>% group_by(class) %>%  summarise(sum_math = sum(math))
 df_group1
 
 df_group2 <- df_exam %>% group_by(class) %>% summarise(mean_math = mean(math))
-df_group2
+View(df_group2)
 
 #inner_join:  두 개 이상 의 DF의 공통 컬럼으로 조인
 df_teacher <- data.frame(class=c(1,2,3,4,5),
